@@ -28,6 +28,9 @@ Artshop::Application.routes.draw do
   
   match '/search' => 'movies#search'
   
+  match '/cart' => 'cart#index'
+  match'/cart/:id' => 'cart#add'
+  
   
   
   
