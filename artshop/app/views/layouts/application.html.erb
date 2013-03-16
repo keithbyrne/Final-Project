@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+	<title>Cinema Land</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="/assets/application.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="/assets/coin-slider-styles.css" type="text/css" />
+	<!--[if IE 6]>
+		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
+	<![endif]-->
+	<script type="text/javascript" src="/assets/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="/assets/jquery-func.js"></script>
+	<script type="text/javascript" src="/assets/coin-slider.min.js"></script>
+
+</head>
+<body>
+<!-- Shell -->
+<div id="shell">
+	<!-- Header -->
+	<div id="header">
+		<h1 id="logo"><a href="#"></a></h1>
+		<div class="social">
+			<span>FOLLOW US ON:</span>
+			<ul>
+			    <li><a class="twitter" href="#">twitter</a></li>
+			    <li><a class="facebook" href="#">facebook</a></li>
+			    <li><a class="vimeo" href="#">vimeo</a></li>
+			</ul>
+		</div>
+		<!-- Navigation -->
+		<div id="navigation">
+			<ul>
+			    <li><a href="/home">HOME</a></li>
+			    <li><a href="#">NEWS</a></li>
+			    <li><a href="/movies">NOW SHOWING</a></li>
+			    <li><a href="#">COMING SOON</a></li>
+			    <li><a href="/contact">CONTACT</a></li>
+			    <li><a href="/about">ABOUT US</a></li>
+			</ul>
+		</div>
+		<br>
+		<!-- end Navigation -->
+		<!-- Sub-menu -->
+		<div id="sub-navigation">
+			<ul>
+			    <li> <%if !current_user%> <%= link_to 'Sign in', new_user_session_path %></li>
+			    <li><%= link_to 'Register', new_user_registration_path %></li>
+			    <li><%else%> <%= link_to 'Sign out', destroy_user_session_path %></li>
+			<%end%>
+		
+			</ul>
+			<div id="search">
+				<form action="home_submit" method="get" accept-charset="utf-8">
+					<label for="search-field">SEARCH</label>					
+					<input type="text" name="search field" value="Search for a Movie here" id="search-field" title="Enter search here" class="blink search-field"  />
+					<input type="submit" value="GO!" class="search-button" />
+				</form>
+			</div>
+		</div>
+		<div class="searchbox">
+		<h2 class="BoxHeaders">Search</h2>
+		<%= render :partial => 'movies/search'%>
+		</div>	
+			
+			
+		<p class="notice"><%= notice %></p>
+		<p class="alert"><%= alert %></p>
+		<!-- end Sub-Menu -->
+		
+	</div>
+
+	
+	
+	<!-- end Header -->
+	
+	<!-- Main -->
+	<div id="main">
+		<!-- Content -->
+		<div id="content">
+
+			<!-- Box -->
+			<div class="box">
+				<br>
+
+				
+<%= yield %>
+
+<% if user_signed_in? %>
+			<div>Signed in as ...<% current_user.email %>(<%= link_to 'Sign Out', destroy_user_session_path, :method =>:delete %>) </div>
+		<%else%>
+			<%=link_to 'Register', new_user_registration_path %> or <%=link_to'Sign in', new_user_session_path%>
+			<%end%>
+
+
+
+				
+			<br>
+			<br>	
+		<!-- NEWS -->
+		<div id="news">
+			<div class="head">
+				<h3>NEWS</h3>
+				<p class="text-right"></p>
+			</div>
+			<br>
+			<div class="content">
+				<p class="date">11.04.09</p>
+				<h4>Disney's A Christmas Carol</h4>
+				<p>&quot;Disney's A Christmas Carol,&quot; a multi-sensory thrill ride re-envisioned by Academy Award&reg;-winning filmmaker Robert Zemeckis, captures... </p>
+				<a href="#">Read more</a>
+			</div>
+			<div class="content">
+				<p class="date">11.04.09</p>
+				<h4>Where the Wild Things Are</h4>
+				<p>Innovative director Spike Jonze collaborates with celebrated author Maurice Sendak to bring one of the most beloved books of all time to the big screen in &quot;Where the Wild Things Are,&quot;...</p>
+				<a href="#">Read more</a>
+			</div>
+			<div class="content">
+				<p class="date">10.04.09</p>
+				<h4>The Box</h4>
+				<p>Norma and Arthur Lewis are a suburban couple with a young child who receive an anonymous gift bearing fatal and irrevocable consequences.</p>
+				<a href="#">Read more</a>
+			</div>
+		</div>
+		<!-- end NEWS -->
+	
+		<!-- Coming -->
+		<div id="coming">
+			<div class="head">
+				<h3>Categories</h3>
+			</div>
+			
+				
+			
+			<br>
+			<div class="content">
+			<%= render '/movies/categoryDistinctList' %>
+			<br>
+				<h4>The Princess and the Frog </h4>
+					<a href="#"><img src="/assets/coming-soon1.jpg" alt="coming soon" /></a>
+				<p>Walt Disney Animation Studios presents the musical "The Princess and the Frog," an animated comedy set in the great city of New Orleans...</p>
+				<a href="#">Read more</a>
+			</div>
+			<div class="cl">&nbsp;</div>
+			<div class="content">
+				<h4>The Princess and the Frog </h4>
+					<a href="#"><img src="/assets/coming-soon2.jpg" alt="coming soon" /></a>
+				<p>Walt Disney Animation Studios presents the musical "The Princess and the Frog," an animated comedy set in the great city of New Orleans...</p>
+				<a href="#">Read more</a>
+			</div>
+			
+		</div>
+		<!-- end Coming -->
+		<div class="cl">&nbsp;</div>
+	</div>
+	<!-- end Main -->
+
+	<!-- Footer -->
+	<div id="footer">
+		<p>
+			<a href="/home">HOME</a> <span>|</span>
+			<a href="#">NEWS</a> <span>|</span>
+			<a href="/movies">NOW SHOWING</a> <span>|</span>
+			<a href="#">COMING SOON </a> <span>|</span>
+			<a href="/contact">CONTACT </a>
+		</p>
+		
+	</div>
+	<!-- end Footer -->
+</div>
+<!-- end Shell -->
+</body>
+</html>

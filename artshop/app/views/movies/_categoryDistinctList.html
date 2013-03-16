@@ -1,0 +1,13 @@
+<% @movies = Movie.select('DISTINCT category') %>
+
+<div class="categoryListAll">
+
+<% @movies.each do | c | %>
+
+<a href="/category/<%= c.category %>" id="categorylisting"><%= c.category %></a>
+
+<br />
+
+<% end %>
+
+</div>
