@@ -1,7 +1,22 @@
 Artshop::Application.routes.draw do
+  get "orderitem/index"
+
+  get "orderitem/show"
+
+  get "orderitem/new"
+
+  get "orderitem/edit"
+
+  devise_for :users do
+  resources :orders 
+  end
+  resources :orders do
+  resources :orderitems 
+  end
+
   get "cart/index"
 
-  devise_for :users
+  
 
   get "home/sign_up"
   
@@ -30,6 +45,14 @@ Artshop::Application.routes.draw do
   
   match '/cart' => 'cart#index'
   match'/cart/:id' => 'cart#add'
+  match '/cart/remove/:id' => 'cart#remove'
+  match '/clearCart' => 'cart#clearCart'
+  
+  resources :orders do
+  resources :orderitems
+  end
+  
+  match '/checkout' => 'cart#createOrder'
   
   
   

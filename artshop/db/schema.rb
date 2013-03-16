@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311201847) do
+ActiveRecord::Schema.define(:version => 20130316181227) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,28 @@ ActiveRecord::Schema.define(:version => 20130311201847) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "orderitems", :force => true do |t|
+    t.integer  "item_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "quantity"
+    t.decimal  "price"
+    t.integer  "order_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "orderitems", ["order_id"], :name => "index_orderitems_on_order_id"
+
+  create_table "orders", :force => true do |t|
+    t.datetime "order_date"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
