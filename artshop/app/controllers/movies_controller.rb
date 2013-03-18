@@ -1,6 +1,8 @@
 class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
+  
+  before_filter :ensure_admin, :except => [:index, :show]
   def index
     @movies = Movie.all
 
@@ -100,6 +102,12 @@ class MoviesController < ApplicationController
     respond_to do |format|
       format.html # home.html.erb
       format.json {render json: @movies}
+    end
+  end
+  
+  def ensure_admin
+      unless current_user && current_user.admin?
+      render :text => "Access Error Message", :status => :unauthorized
     end
   end
 end
