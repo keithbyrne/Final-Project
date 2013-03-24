@@ -6,12 +6,13 @@ Artshop::Application.routes.draw do
   get "orderitem/new"
 
   get "orderitem/edit"
+  resources :movies
 
   devise_for :users do
-  resources :orders 
+    resources :orders 
   end
   resources :orders do
-  resources :orderitems 
+    resources :orderitems 
   end
 
   get "cart/index"
@@ -25,12 +26,17 @@ Artshop::Application.routes.draw do
   
 
 
-  resources :movies
-
+  
   get "index/home"
 
   get "index/about"
   match'/about' =>'index#about'
+  
+  get "index/news"
+  match'/news' =>'index#news'
+  
+  get "index/coming"
+  match'/coming' =>'index#coming'
 
   get "index/contact"
   match'/contact' =>'index#contact'
@@ -47,17 +53,13 @@ Artshop::Application.routes.draw do
   match'/cart/:id' => 'cart#add'
   match '/cart/remove/:id' => 'cart#remove'
   match '/clearCart' => 'cart#clearCart'
-  
-  resources :orders do
-  resources :orderitems
-  end
-  
+    
   match '/checkout' => 'cart#createOrder'
   
   
   
   
-  root :to => 'index#home'
+  root :to => 'index#home',:as=>:home
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

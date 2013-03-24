@@ -2,7 +2,7 @@
 
 <%= label_tag(:q, "Search for:") %>
 
-<%= text_field_tag(:q) %>
+<%= text_field_tag 'q', nil, :placeholder => 'Enter search term...' %>
 
 <%= submit_tag("Search") %>
 

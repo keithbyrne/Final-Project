@@ -31,9 +31,9 @@
 		<div id="navigation">
 			<ul>
 			    <li><a href="/home">HOME</a></li>
-			    <li><a href="#">NEWS</a></li>
+			    <li><a href="/news">NEWS</a></li>
 			    <li><a href="/movies">NOW SHOWING</a></li>
-			    <li><a href="#">COMING SOON</a></li>
+			    <li><a href="/coming">COMING SOON</a></li>
 			    <li><a href="/contact">CONTACT</a></li>
 			    <li><a href="/about">ABOUT US</a></li>
 			</ul>
@@ -50,17 +50,14 @@
 		
 			</ul>
 			<div id="search">
-				<form action="home_submit" method="get" accept-charset="utf-8">
-					<label for="search-field">SEARCH</label>					
-					<input type="text" name="search field" value="Search for a Movie here" id="search-field" title="Enter search here" class="blink search-field"  />
-					<input type="submit" value="GO!" class="search-button" />
-				</form>
+				<div class="searchbox">
+				<h2 class="BoxHeaders"></h2>
+				<%= render :partial => 'movies/search'%>
+				</div>
 			</div>
 		</div>
-		<div class="searchbox">
-		<h2 class="BoxHeaders">Search</h2>
-		<%= render :partial => 'movies/search'%>
-		</div>	
+		<br/>
+		
 			
 			
 		<p class="notice"><%= notice %></p>
@@ -86,7 +83,7 @@
 <%= yield %>
 
 <% if user_signed_in? %>
-			<div>Signed in as ...<% current_user.email %>(<%= link_to 'Sign Out', destroy_user_session_path, :method =>:delete %>) </div>
+			<div>Signed in as ... <%= current_user.email %> (<%= link_to 'Sign Out', destroy_user_session_path, :method =>:delete %>) </div>
 		<%else%>
 			<%=link_to 'Register', new_user_registration_path %> or <%=link_to'Sign in', new_user_session_path%>
 			<%end%>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318222524) do
+ActiveRecord::Schema.define(:version => 20130323173935) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
@@ -21,8 +21,15 @@ ActiveRecord::Schema.define(:version => 20130318222524) do
     t.text     "description"
     t.string   "poster"
     t.string   "trailer"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.string   "trailer_file_name"
+    t.string   "trailer_content_type"
+    t.integer  "trailer_file_size"
+    t.datetime "trailer_updated_at"
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
   end
 
   create_table "orderitems", :force => true do |t|

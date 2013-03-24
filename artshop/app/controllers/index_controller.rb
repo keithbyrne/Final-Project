@@ -10,4 +10,12 @@ class IndexController < ApplicationController
   def contact
     @title = "Contact"
   end
+  
+  def news
+    @title = "News"
+  end
+  
+  def coming
+    @title = "Coming"
+  end
 end

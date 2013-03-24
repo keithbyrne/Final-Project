@@ -1,8 +1,7 @@
 class MoviesController < ApplicationController
   # GET /movies
   # GET /movies.json
-  
-  before_filter :ensure_admin, :except => [:index, :show]
+  before_filter :ensure_admin, :except => [:index, :show, :search, :category]
   def index
     @movies = Movie.all
 
@@ -78,7 +77,7 @@ class MoviesController < ApplicationController
     @movie.destroy
 
     respond_to do |format|
-      format.html { redirect_to movies_url }
+      format.html { redirect_to movies_url}
       format.json { head :no_content }
     end
   end
