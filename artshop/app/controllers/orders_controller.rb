@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
+  require "prawn"
+  
   def index
     @orders = Order.all
 
@@ -14,12 +16,17 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
+      # format.pdf do
+      #           pdf = orderPdf.new(@user, view_context)
+      #           send_data pdf.render, filename:
+      #           "invoice_#{@user.create_at.strftime("%d/&m/&y")}.pdf",
+      #           type: "application/pfd"
       format.json { render json: @order }
     end
   end
+# end
 
   # GET /orders/new
   # GET /orders/new.json

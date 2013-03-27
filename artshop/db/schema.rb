@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323173935) do
+ActiveRecord::Schema.define(:version => 20130325215010) do
 
   create_table "movies", :force => true do |t|
     t.string   "name"
@@ -53,6 +53,39 @@ ActiveRecord::Schema.define(:version => 20130323173935) do
   end
 
   add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
+
+  create_table "screeninginfos", :force => true do |t|
+    t.time     "showtime"
+    t.date     "showdate"
+    t.time     "admissiontime"
+    t.integer  "movie_id"
+    t.integer  "screeningroom_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "screeningrooms", :force => true do |t|
+    t.string   "name"
+    t.integer  "capacity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tickets", :force => true do |t|
+    t.integer  "user_id"
+    t.decimal  "price"
+    t.integer  "screeninginfo_id"
+    t.integer  "tickettype_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "tickettypes", :force => true do |t|
+    t.string   "type"
+    t.decimal  "discount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

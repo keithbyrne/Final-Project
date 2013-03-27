@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Showtime:</b>
+  <%= @screeninginfo.showtime %>
+</p>
+
+<p>
+  <b>Showdate:</b>
+  <%= @screeninginfo.showdate %>
+</p>
+
+<p>
+  <b>Admissiontime:</b>
+  <%= @screeninginfo.admissiontime %>
+</p>
+
+<p>
+  <b>Movie:</b>
+  <%= @screeninginfo.movie_id %>
+</p>
+
+<p>
+  <b>Screeningroom:</b>
+  <%= @screeninginfo.screeningroom_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_screeninginfo_path(@screeninginfo) %> |
+<%= link_to 'Back', screeninginfos_path %>

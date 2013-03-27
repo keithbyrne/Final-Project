@@ -1,0 +1,29 @@
+<h1>Listing tickets</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Price</th>
+    <th>Screeninginfo</th>
+    <th>Tickettype</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tickets.each do |ticket| %>
+  <tr>
+    <td><%= ticket.user_id %></td>
+    <td><%= ticket.price %></td>
+    <td><%= ticket.screeninginfo_id %></td>
+    <td><%= ticket.tickettype_id %></td>
+    <td><%= link_to 'Show', ticket %></td>
+    <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
+    <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Ticket', new_ticket_path %>

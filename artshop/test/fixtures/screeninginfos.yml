@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  showtime: 2013-03-25 21:39:25
+  showdate: 2013-03-25
+  admissiontime: 2013-03-25 21:39:25
+  movie_id: 1
+  screeningroom_id: 1
+
+two:
+  showtime: 2013-03-25 21:39:25
+  showdate: 2013-03-25
+  admissiontime: 2013-03-25 21:39:25
+  movie_id: 1
+  screeningroom_id: 1

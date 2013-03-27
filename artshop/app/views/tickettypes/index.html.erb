@@ -1,0 +1,25 @@
+<h1>Listing tickettypes</h1>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Discount</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tickettypes.each do |tickettype| %>
+  <tr>
+    <td><%= tickettype.type %></td>
+    <td><%= tickettype.discount %></td>
+    <td><%= link_to 'Show', tickettype %></td>
+    <td><%= link_to 'Edit', edit_tickettype_path(tickettype) %></td>
+    <td><%= link_to 'Destroy', tickettype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tickettype', new_tickettype_path %>

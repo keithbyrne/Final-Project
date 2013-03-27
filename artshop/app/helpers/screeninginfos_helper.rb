@@ -1,0 +1,2 @@
+module ScreeninginfosHelper
+end

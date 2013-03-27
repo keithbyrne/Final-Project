@@ -7,9 +7,13 @@
 
 <p>
   <b>User:</b>
-  <%= @order.user %>
+  <%= @order.user.email %>
 </p>
 
+<p>
+  <b>Movie:</b>
+  <%= @movie.name %>
+</p>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

@@ -1,4 +1,12 @@
 Artshop::Application.routes.draw do
+  resources :screeningrooms
+
+  resources :screeninginfos
+
+  resources :tickettypes
+
+  resources :tickets
+
   get "orderitem/index"
 
   get "orderitem/show"
