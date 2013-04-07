@@ -109,4 +109,70 @@ class MoviesController < ApplicationController
       render :text => "Access Error Message", :status => :unauthorized
     end
   end
-end
+
+#   # added orders 06/04/13
+
+#   # GET /orders/1/items
+# def index
+# # For URL like /orders/1/items
+# # Get the order with id=1
+# @order = Order.find(params[:order_id])
+# # Access all items for that order
+# @movies = @order.movies
+# end
+# # GET /orders/1/items/2
+# def show
+# @order = Order.find(params[:order_id])
+# # For URL like /orders/1/items/2
+# # Find an item in orders 1 that has id=2
+# @movie = @order.movies.find(params[:id])
+# end
+# # GET /orders/1/items/new
+# def new
+# @order = Order.find(params[:order_id])
+# # Associate an item object with order 1
+# @movie = @order.items.build
+# end
+# # POST /orders/1/items
+# def create
+# @order = Order.find(params[:order_id])
+# # For URL like /orders/1/items
+# # Populate an item associate with order 1 with form data
+# # Order will be associated with the item
+# @movie = @order.movies.build(params[:movie])
+# if @movie.save
+# # Save the item successfully
+# redirect_to order_movie_url(@order, @movie)
+# else
+# render :action => "new"
+# end
+# end
+# # GET /orders/1/items/2/edit
+# def edit
+# @order = Order.find(params[:order_id])
+# # For URL like /orders/1/items/2/edit
+# # Get item id=2 for order 1
+# @movie = @order.movie.find(params[:id])
+# end
+# # PUT /orders/1/items/2
+# def update
+# @order = Order.find(params[:order_id])
+# @movie = Movie.find(params[:id])
+# if @movie.update_attributes(params[:movie])
+# # Save the item successfully
+# redirect_to order_item_url(@order, @movie)
+# else
+# render :action => "edit"
+# end
+# end
+# # DELETE /orders/1/items/2
+# def destroy
+# @order = Order.find(params[:order_id])
+# @movie = Movie.find(params[:id])
+# @movie.destroy
+# respond_to do |format|
+# format.html { redirect_to order_movies_path(@order) }
+# format.xml { head :ok }
+# end
+# end
+ end

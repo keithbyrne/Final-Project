@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @screeningroom.name %>
+</p>
+
+<p>
+  <b>Capacity:</b>
+  <%= @screeningroom.capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_screeningroom_path(@screeningroom) %> |
+<%= link_to 'Back', screeningrooms_path %>

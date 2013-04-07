@@ -1,0 +1,9 @@
+Thanks your ticket will now be printed ....
+<br>
+<h1>Ticket Details</h1>
+<% @ticketArray.each do |ticket| %>
+<%=number_with_precision(ticket.price, :precision => 2)%>
+<%=ticket.screeninginfo.movie.name%>
+<%=ticket.screeninginfo.printtime%>
+<br/><br/>
+<%end%>

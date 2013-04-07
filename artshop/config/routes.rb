@@ -1,4 +1,6 @@
 Artshop::Application.routes.draw do
+  resources :ticketnames
+
   resources :screeningrooms
 
   resources :screeninginfos
@@ -18,6 +20,7 @@ Artshop::Application.routes.draw do
 
   devise_for :users do
     resources :orders 
+    resources :tickets
   end
   resources :orders do
     resources :orderitems 

@@ -26,6 +26,8 @@ class TicketsController < ApplicationController
   def new
     @ticket = Ticket.new
 
+    @ticket.price = 5.99
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @ticket }

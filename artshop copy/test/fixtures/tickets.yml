@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  price: 9.99
+  screeninginfo_id: 1
+  tickettype_id: 1
+
+two:
+  user_id: 1
+  price: 9.99
+  screeninginfo_id: 1
+  tickettype_id: 1

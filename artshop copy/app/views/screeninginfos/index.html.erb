@@ -1,0 +1,31 @@
+<h1>Listing screeninginfos</h1>
+
+<table>
+  <tr>
+    <th>Showtime</th>
+    <th>Showdate</th>
+    <th>Admissiontime</th>
+    <th>Movie</th>
+    <th>Screeningroom</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @screeninginfos.each do |screeninginfo| %>
+  <tr>
+    <td><%= screeninginfo.showtime %></td>
+    <td><%= screeninginfo.showdate %></td>
+    <td><%= screeninginfo.admissiontime %></td>
+    <td><%= screeninginfo.movie_id %></td>
+    <td><%= screeninginfo.screeningroom_id %></td>
+    <td><%= link_to 'Show', screeninginfo %></td>
+    <td><%= link_to 'Edit', edit_screeninginfo_path(screeninginfo) %></td>
+    <td><%= link_to 'Destroy', screeninginfo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Screeninginfo', new_screeninginfo_path %>

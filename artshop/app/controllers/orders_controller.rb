@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   require "prawn"
   
   def index
-    @orders = Order.all
+    @orders = current_user.orders
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
+    @orderitems = @order.orderitems
     respond_to do |format|
       format.html # show.html.erb
       # format.pdf do

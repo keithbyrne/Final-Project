@@ -1,0 +1,66 @@
+<p id="notice"><%= notice %></p>
+
+<!-- <p>
+  <b>Name:</b>
+  <%= @movie.name %>
+</p>
+
+<p>
+  <b>Director:</b>
+  <%= @movie.director %>
+</p>
+
+<p>
+  <b>Actors:</b>
+  <%= @movie.actors %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @movie.category %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @movie.description %>
+</p>
+
+<p>
+  <b>Poster:</b>
+  <%= @movie.poster %>
+</p>
+
+<p>
+  <b>Trailer:</b>
+  <%= @movie.trailer %>
+</p>
+
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>
+<a href="/cart/<%= @movie.id %>">Add to Cart</a><br><br> -->
+
+
+
+
+<h1><%=@movie.name %></h1>
+</br>
+<%= link_to (image_tag @movie.poster, :style => "height:300px;"),@movie %>
+</br>
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Trailer</th>
+  </tr>
+
+  <tr>
+    <td><%= @movie.description %></td>
+    <td><iframe width="380" height="215" frameborder="0" src="<%= @movie.trailer %>"></iframe></td>
+	<% if current_user.try(:admin?) %>
+   	<td><%= link_to 'Show', @movie %></td>
+    <td><%= link_to 'Edit', edit_movie_path(@movie) %></td>
+    <td><%= button_to 'Destroy', @movie, :method =>:delete, data:{ confirm: 'Are you sure?' } %></td>
+<% end %>
+	<td><a href="/cart/<%= @movie.id %>">Add to Cart</a><br><br></td>
+  </tr>
+</table>

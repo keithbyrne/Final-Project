@@ -5,7 +5,7 @@
     <th>User</th>
     <th>Price</th>
     <th>Screeninginfo</th>
-    <th>Tickettype</th>
+    <th>Ticketname</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,10 +13,10 @@
 
 <% @tickets.each do |ticket| %>
   <tr>
-    <td><%= ticket.user_id %></td>
+    <td><%= ticket.user.email %></td>
     <td><%= ticket.price %></td>
     <td><%= ticket.screeninginfo_id %></td>
-    <td><%= ticket.tickettype_id %></td>
+    <td><%= ticket.ticketname_id %></td>
     <td><%= link_to 'Show', ticket %></td>
     <td><%= link_to 'Edit', edit_ticket_path(ticket) %></td>
     <td><%= link_to 'Destroy', ticket, method: :delete, data: { confirm: 'Are you sure?' } %></td>

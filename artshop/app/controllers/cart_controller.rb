@@ -39,6 +39,35 @@ before_filter :authenticate_user!
   def createOrder
     # Step 1: Get the current user
     @user = User.find(current_user.id)
+
+    @ticketnameid = params[:ticketname]
+    ticketdiscount = Ticketname.find(@ticketnameid).discount
+    totalprice = 0
+
+    @screeninginfo = params[:screeninginfos]
+    screen = Screeninginfo.find(@screeninginfo.to_i)
+    @quantity = params[:quantity].to_i
+
+    capacity = screen.screeningroom.capacity.to_i
+
+    @purchasedQuantity = Ticket.where(:screeninginfo_id=>@screeninginfo.to_i).size
+
+    @ticketArray = Array.new
+
+    #checking to make sure the cinima isnt full so tickets can be purchased
+    if @quantity < (capacity-@purchasedQuantity)
+      @quantity.times do |purchase|
+        @ticket = Ticket.new
+        @ticket.screeninginfo_id = @screeninginfo
+        @ticket.user_id = @user.id
+        @ticket.price = screen.price - (screen.price / ticketdiscount)
+        totalprice += @ticket.price
+        @ticket.ticketname_id = @ticketnameid.to_i
+        @ticketArray << @ticket
+        @ticket.save!
+      end
+    end
+
     # Step 2: Create a new order and associate it with the current user
     @order = @user.orders.build(:order_date => DateTime.now)
     @order.save
@@ -47,8 +76,9 @@ before_filter :authenticate_user!
     @cart.each do | id, quantity |
     item = Movie.find_by_id(id)
     @orderitem = @order.orderitems.build(:item_id => item.id, :title => 
-    item.name, :description => item.description, :quantity => quantity)
+    item.name, :description => item.description, :quantity => @quantity,:price=>totalprice)
     @orderitem.save
+    session[:cart] = nil
   end
   end
   end

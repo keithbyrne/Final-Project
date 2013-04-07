@@ -11,21 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
+
   <div class="field">
     <%= f.label :price %><br />
-    <%= f.text_field :price %>
+    <%= @ticket.price %>
   </div>
   <div class="field">
     <%= f.label :screeninginfo_id %><br />
     <%= f.number_field :screeninginfo_id %>
   </div>
   <div class="field">
-    <%= f.label :tickettype_id %><br />
-    <%= f.number_field :tickettype_id %>
+    <%= f.label :ticketname_id %><br />
+    <%= f.collection_select :ticketname, Ticketname.all, :id, :name %> 
   </div>
   <div class="actions">
     <%= f.submit %>

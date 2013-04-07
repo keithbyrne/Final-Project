@@ -9,7 +9,7 @@
 
 <% @movies.each do |movie| %>
   <tr>
-    <td><%= link_to (movie.name) %></td>
+    <td><%= link_to (movie.name),movie %></td>
     <td><%= link_to (image_tag movie.poster, :style => "height:200px;"),movie %></td>
     <td><iframe width="380" height="215" frameborder="0" src="<%= movie.trailer %>"></iframe></td>
 	<% if current_user.try(:admin?) %>

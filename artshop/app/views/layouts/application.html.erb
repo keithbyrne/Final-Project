@@ -9,24 +9,30 @@
 		<link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" />
 	<![endif]-->
 	<script type="text/javascript" src="/assets/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="/assets/application.js"></script>
 	<script type="text/javascript" src="/assets/jquery-func.js"></script>
 	<script type="text/javascript" src="/assets/coin-slider.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+
 
 </head>
-<body>
+<body onload='initialize()'>
 <!-- Shell -->
 <div id="shell">
 	<!-- Header -->
 	<div id="header">
 		<h1 id="logo"><a href="#"></a></h1>
-		<div class="social">
+		<br />
+		<br />
+		<!-- <div class="social">
 			<span>FOLLOW US ON:</span>
 			<ul>
 			    <li><a class="twitter" href="#">twitter</a></li>
 			    <li><a class="facebook" href="#">facebook</a></li>
 			    <li><a class="vimeo" href="#">vimeo</a></li>
 			</ul>
-		</div>
+		</div> -->
 		<!-- Navigation -->
 		<div id="navigation">
 			<ul>
@@ -47,7 +53,11 @@
 			    <li><%= link_to 'Register', new_user_registration_path %></li>
 			    <li><%else%> <%= link_to 'Sign out', destroy_user_session_path %></li>
 			<%end%>
-		
+			<% if current_user.try(:admin?) %>
+			<li><a href="/screeninginfos">Screening</a></li>
+		    <li><a href="/ticketnames">Discount</a></li>
+		    <li><a href="/tickets">Ticket</a></li>
+		<%end%>
 			</ul>
 			<div id="search">
 				<div class="searchbox">
@@ -100,22 +110,19 @@
 			<br>
 			<div class="content">
 				<p class="date">11.04.09</p>
-				<h4>Disney's A Christmas Carol</h4>
-				<p>&quot;Disney's A Christmas Carol,&quot; a multi-sensory thrill ride re-envisioned by Academy Award&reg;-winning filmmaker Robert Zemeckis, captures... </p>
+				<h4>The Princess and the Frog</h4>
+				<a href="#"><img src="/assets/coming-soon1.jpg" alt="coming soon" /></a>
+				<p>Walt Disney Animation Studios presents the musical "The Princess and the Frog," an animated comedy set in the great city of New Orleans...</p>
 				<a href="#">Read more</a>
 			</div>
 			<div class="content">
 				<p class="date">11.04.09</p>
 				<h4>Where the Wild Things Are</h4>
+				<a href="#"><img src="/assets/coming-soon2.jpg" alt="coming soon" /></a>
 				<p>Innovative director Spike Jonze collaborates with celebrated author Maurice Sendak to bring one of the most beloved books of all time to the big screen in &quot;Where the Wild Things Are,&quot;...</p>
 				<a href="#">Read more</a>
 			</div>
-			<div class="content">
-				<p class="date">10.04.09</p>
-				<h4>The Box</h4>
-				<p>Norma and Arthur Lewis are a suburban couple with a young child who receive an anonymous gift bearing fatal and irrevocable consequences.</p>
-				<a href="#">Read more</a>
-			</div>
+			
 		</div>
 		<!-- end NEWS -->
 	
@@ -130,28 +137,20 @@
 			<br>
 			<div class="content">
 			<%= render '/movies/categoryDistinctList' %>
-			<br>
-				<h4>The Princess and the Frog </h4>
-					<a href="#"><img src="/assets/coming-soon1.jpg" alt="coming soon" /></a>
-				<p>Walt Disney Animation Studios presents the musical "The Princess and the Frog," an animated comedy set in the great city of New Orleans...</p>
-				<a href="#">Read more</a>
-			</div>
-			<div class="cl">&nbsp;</div>
-			<div class="content">
-				<h4>The Princess and the Frog </h4>
-					<a href="#"><img src="/assets/coming-soon2.jpg" alt="coming soon" /></a>
-				<p>Walt Disney Animation Studios presents the musical "The Princess and the Frog," an animated comedy set in the great city of New Orleans...</p>
-				<a href="#">Read more</a>
 			</div>
 			
 		</div>
-		<!-- end Coming -->
 		<div class="cl">&nbsp;</div>
 	</div>
-	<!-- end Main -->
-
-	<!-- Footer -->
 	<div id="footer">
+		<div class="social">
+			<span>FOLLOW US ON:</span>
+			<ul>
+			    <li><a class="twitter" href="#">twitter</a></li>
+			    <li><a class="facebook" href="#">facebook</a></li>
+			    <li><a class="vimeo" href="#">vimeo</a></li>
+			</ul>
+		</div>
 		<p>
 			<a href="/home">HOME</a> <span>|</span>
 			<a href="#">NEWS</a> <span>|</span>
@@ -161,8 +160,9 @@
 		</p>
 		
 	</div>
-	<!-- end Footer -->
+
 </div>
-<!-- end Shell -->
+
 </body>
+
 </html>

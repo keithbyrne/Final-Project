@@ -1,0 +1,29 @@
+<h1>Movies Selection</h1>
+</br>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Poster</th>
+    <th>Trailer</th>
+  </tr>
+
+<% @movies.each do |movie| %>
+  <tr>
+    <td><%= link_to (movie.name) %></td>
+    <td><%= link_to (image_tag movie.poster, :style => "height:200px;"),movie %></td>
+    <td><iframe width="380" height="215" frameborder="0" src="<%= movie.trailer %>"></iframe></td>
+	<% if current_user.try(:admin?) %>
+    <td><%= link_to 'Show', movie %></td>
+    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+    <td><%= button_to 'Destroy', movie, :method =>:delete, data:{ confirm: 'Are you sure?' } %></td>
+<% end %>
+	<td><a href="/cart/<%= movie.id %>">Add to Cart</a><br><br></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if current_user.try(:admin?) %>
+<%= link_to 'New Movie', new_movie_path %>
+<% end %>
+

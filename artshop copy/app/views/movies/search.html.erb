@@ -1,0 +1,15 @@
+<h1>Search Product Catalog</h1> 
+<br /> 
+<h3>Searching For: <%= @search_term %></h3> 
+<table class="catalog"> 
+<% if @movies.length == 0 %> <br /> 
+<h2>No Products found for this search term!!</h2> 
+<% end %> <% @movies.each do |item| %> 
+<tr> <td> <div class="image"> 
+<%= link_to (image_tag item.poster, :style => "height:100px"), item %> </div> </td> 
+<td> 
+	<div class="title"> <%= link_to item.name, item %> </div> 
+	<div class="description"> <%=h item.description %> </div> 
+	
+	</td> </tr> <% end %> </table> 
+	

@@ -1,19 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Order date:</b>
-  <%= @order.order_date %>
-</p>
+<% @orderitems.each do |orderitem| %>
 
-<p>
-  <b>User:</b>
-  <%= @order.user.email %>
-</p>
+	<%=orderitem.title%>
+	<br/>
+	<%=orderitem.price%>
+	<br/>
+	<%=orderitem.quantity%>
 
-<p>
-  <b>Movie:</b>
-  <%= @movie.name %>
-</p>
+<%end%>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

@@ -12,4 +12,16 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-star-rating
 //= require_tree .
+function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(53.344166,-6.26188),
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+      }
+
+

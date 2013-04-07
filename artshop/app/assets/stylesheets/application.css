@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery-star-rating
  *= require_tree .
  */
 
@@ -118,3 +119,10 @@ h1#logo a { float:left; width:239px; height:80px; background:url('/assets/logo_c
 #footer a:hover.designby { color:white; text-decoration:none; }
 
 p, tr, td, td a, a, p, ol, ul {color:white}
+
+#map-canvas 
+{
+    width:50%;
+    height:300px;
+}
+
